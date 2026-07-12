@@ -35,4 +35,4 @@ jobs:
           TEXT_API_KEY: ${{ secrets.TEXT_API_KEY }}
           TEXT_API_USERNAME: ${{ secrets.TEXT_API_USERNAME }}
 
-        run: python -m weather.main
+        run: python -m weather.main -d
