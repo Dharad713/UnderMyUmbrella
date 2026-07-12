@@ -1,11 +1,6 @@
 from weather.client import getHourlyWeatherInfo
 from weather.analyzer import get_hourly_forecast, summarize_forecast
-from weather.config import (
-    HOME_LATITUDE,
-    HOME_LONGITUDE,
-    WEATHER_API_URL,
-    PHONE_NUMBER
-)
+from weather.config import HOME_LATITUDE, HOME_LONGITUDE, WEATHER_API_URL, PHONE_NUMBER
 from weather.formatter import format_weather_message
 from weather.messaging.textbelt import send_weather_text
 

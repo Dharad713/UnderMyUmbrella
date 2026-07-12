@@ -3,7 +3,6 @@ import requests
 TEXTBELT_URL = "https://textbelt.com/text"
 
 
-
 def send_weather_text(
     phone_number: str,
     message: str,
@@ -26,7 +25,4 @@ def send_weather_text(
         error = result.get("error", "Unknown Textbelt error")
         raise RuntimeError(f"Text message failed: {error}")
 
-    print(
-        "Text sent successfully. "
-        f"Remaining quota: {result.get('quotaRemaining')}"
-    )
+    print("Text sent successfully. " f"Remaining quota: {result.get('quotaRemaining')}")
