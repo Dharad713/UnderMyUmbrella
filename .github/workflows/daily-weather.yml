@@ -37,8 +37,7 @@ jobs:
           HOME_LAT: ${{ secrets.HOME_LAT }}
           HOME_LONG: ${{ secrets.HOME_LONG }}
           PHONE_NUMBER: ${{ secrets.PHONE_NUMBER }}
-          TEXT_API_KEY: ${{ secrets.TEXT_API_KEY }}
-          TEXT_API_USERNAME: ${{ secrets.TEXT_API_USERNAME }}
+          TEXTBELT_API_KEY: ${{ secrets.TEXTBELT_API_KEY }}
 
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.dry_run }}" = "true" ]; then
