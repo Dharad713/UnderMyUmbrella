@@ -12,4 +12,5 @@ HOME_LONGITUDE: float = float(os.getenv("HOME_LONG"))
 MIN_REASONABLE_TEMP: int = 45
 MAX_REASONABLE_TEMP: int = 85
 RAIN_CHANCE_THRESHOLD: int = 30
-PHONE_NUMBER: str = os.getenv("PHONE_NUMBER")
+PHONE_NUMBER: str = str(os.getenv("PHONE_NUMBER"))
+API_KEY: str = str(os.getenv("TEXTBELT_API_KEY"))

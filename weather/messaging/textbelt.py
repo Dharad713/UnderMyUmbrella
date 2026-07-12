@@ -1,5 +1,7 @@
 import requests
 
+from weather.config import API_KEY
+
 TEXTBELT_URL = "https://textbelt.com/text"
 
 
@@ -12,7 +14,7 @@ def send_weather_text(
         data={
             "phone": phone_number,
             "message": message,
-            "key": "textbelt",
+            "key": API_KEY,
         },
         timeout=10,
     )

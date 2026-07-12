@@ -1,7 +1,7 @@
 import requests
 
 
-def getHourlyWeatherInfo(url: str, latitude: float, longitude: float) -> dict:
+def get_hourly_weather_info(url: str, latitude: float, longitude: float) -> dict:
     params = {
         "latitude": latitude,
         "longitude": longitude,
