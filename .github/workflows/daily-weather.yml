@@ -35,4 +35,9 @@ jobs:
           TEXT_API_KEY: ${{ secrets.TEXT_API_KEY }}
           TEXT_API_USERNAME: ${{ secrets.TEXT_API_USERNAME }}
 
-        run: python -m weather.main -d
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.dry_run }}" = "true" ]; then
+            python -m weather.main --dry
+          else
+            python -m weather.main --dry
+          fi
