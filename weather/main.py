@@ -1,28 +1,44 @@
 import argparse
-import requests
+import logging
 
+from weather.analyzer import (
+    get_hourly_forecast,
+    summarize_forecast,
+)
 from weather.client import get_hourly_weather_info
-from weather.analyzer import get_hourly_forecast, summarize_forecast
 from weather.config import (
     HOME_LATITUDE,
     HOME_LONGITUDE,
     WEATHER_API_URL,
 )
 from weather.formatter import format_weather_message
-from weather.messaging.textbelt import send_weather_text
+from weather.messaging.textbelt import send_weather_text 
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s | %(levelname)s | %(message)s",
+)
+
+logger = logging.getLogger(__name__)
+
+
+def parse_arguments() -> argparse.Namespace:
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument(
+        "-D",
+        "--dry",
+        action="store_true",
+        help="Print the forecast without sending a text.",
+    )
+
+    return parser.parse_args()
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "-d",
-        "--dry",
-        action="store_true",
-        default=False,
-        help="Dry run (dont send texts)",
-    )
+    args = parse_arguments()
 
-    args = parser.parse_args()
+    logger.info("Weather job started")
 
     try:
         hourly_data = get_hourly_weather_info(
@@ -31,20 +47,22 @@ def main() -> None:
             longitude=HOME_LONGITUDE,
         )
 
+        logger.info("Weather data received")
+
         hourly_forecast = get_hourly_forecast(hourly_data)
         summary = summarize_forecast(hourly_forecast)
         message = format_weather_message(summary)
 
         if args.dry:
+            logger.info("Dry run: text not sent")
             print(message)
         else:
             send_weather_text(message)
+            logger.info("Weather text sent successfully")
 
-    except requests.RequestException as error:
-        print(f"Weather API request failed: {error}")
-
-    except Exception as error:
-        print(f"Application failed: {error}")
+    except Exception:
+        logger.exception("Weather job failed")
+        raise
 
 
 if __name__ == "__main__":

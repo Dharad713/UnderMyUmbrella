@@ -6,4 +6,4 @@ This service is not novel, but is being made mostly as a learning experience
 This uses textbelt's api, which requires a purchase of texts. This is the easiest/cheapest way for me to send specifically text messages, but this could be modified to use an email based system
 
 ## CLI args:
-- `-d` or `--dry` : run the program without sending a text
+- `-D` or `--dry` : run the program without sending a text
