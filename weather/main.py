@@ -19,9 +19,7 @@ def main() -> None:
 
     daily_summary = summarize_forecast(hourly_forecast)
 
-    message = format_weather_message(
-        daily_summary
-    )
+    message = format_weather_message(daily_summary)
     print(message)
 
 
