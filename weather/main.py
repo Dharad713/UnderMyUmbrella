@@ -9,6 +9,7 @@ from weather.client import get_hourly_weather_info
 from weather.config import (
     HOME_LATITUDE,
     HOME_LONGITUDE,
+    PHONE_NUMBER,
     WEATHER_API_URL,
 )
 from weather.formatter import format_weather_message
@@ -57,7 +58,7 @@ def main() -> None:
             logger.info("Dry run: text not sent")
             print(message)
         else:
-            send_weather_text(message)
+            send_weather_text(PHONE_NUMBER, message)
             logger.info("Weather text sent successfully")
 
     except Exception:
