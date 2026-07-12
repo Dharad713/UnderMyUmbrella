@@ -13,7 +13,7 @@ from weather.messaging.textbelt import send_weather_text
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="A simple CLI tool")
+    parser = argparse.ArgumentParser()
     parser.add_argument(
         "-d",
         "--dry",
