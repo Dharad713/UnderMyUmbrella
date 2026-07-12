@@ -5,7 +5,7 @@ from weather.config import (
     RAIN_CHANCE_THRESHOLD,
 )
 from weather.models.weather_codes import get_weather_info
-from weather.models.forcast import DailyWeatherSummary, HourlyForecast
+from weather.models.forecast import DailyWeatherSummary, HourlyForecast
 
 
 def get_hourly_forecast(hourly: dict) -> list[HourlyForecast]:

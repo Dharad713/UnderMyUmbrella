@@ -4,8 +4,10 @@ from weather.config import (
     HOME_LATITUDE,
     HOME_LONGITUDE,
     WEATHER_API_URL,
+    PHONE_NUMBER
 )
 from weather.formatter import format_weather_message
+from weather.messaging.textbelt import send_weather_text
 
 
 def main() -> None:
@@ -21,6 +23,11 @@ def main() -> None:
 
     message = format_weather_message(daily_summary)
     print(message)
+
+    send_weather_text(
+        phone_number=PHONE_NUMBER,
+        message=message,
+    )
 
 
 if __name__ == "__main__":

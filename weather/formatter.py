@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from weather.models.forcast import DailyWeatherSummary
+from weather.models.forecast import DailyWeatherSummary
 
 
 def format_hour(value: datetime) -> str:
