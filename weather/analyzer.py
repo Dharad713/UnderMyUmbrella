@@ -88,11 +88,11 @@ def summarize_forecast(
     else:
         worst_condition = "No notable weather"
 
-    if max_rain_chance >= 50:
+    if max_rain_chance >= 30:
         recommendation = "Bring an umbrella."
     elif max_feels_like > 90:
         recommendation = "Expect uncomfortable heat."
-    elif max_rain_chance >= 30:
+    elif max_rain_chance >= 10:
         recommendation = "There is a chance of rain."
     else:
         recommendation = "Conditions should be generally comfortable."
